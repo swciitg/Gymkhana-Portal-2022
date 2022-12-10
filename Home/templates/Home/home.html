@@ -1,0 +1,29 @@
+{% extends "Home/base.html" %}
+{% load static %}
+{% block content %}
+<iframe src="{% url 'gymkhana-gallery' %}" frameborder="0" style="height: 500px; width: 100%;"></iframe>
+<div class="home-container" style="color: #2c2c2c; display: flex;">
+    <div style="flex: 3">
+   <h4 class="home-title">Welcome to the Students' Gymkhana
+    Council,<br> IIT Guwahati</h4>
+    <p class="home-about">{{about.text}}
+    </p>
+    </div>
+    <aside style="padding:10px;">
+        <div class="container3">
+            <ul>
+                <li class="dropdown3">
+                    <input type="checkbox" />
+                    <a href="#" style="color:white" data-toggle="dropdown">Minutes</a>
+                    <ul class="dropdown-menu3">
+                        {% for minute in minutes%}
+                        <li><a href="media/{{minute.pdf}}">{{ minute.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+{% endblock content %}

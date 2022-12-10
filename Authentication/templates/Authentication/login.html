@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="IIT Guwahati, Gymkhana Portal">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-draft-wysiwyg@1.12.3/dist/react-draft-wysiwyg.css">
+    <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Students Affairs, IIT Guwahati</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Home/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'Authentication/admin.css' %}" />
+</head>
+<body><noscript>You need to enable JavaScript to run this app.</noscript>
+    {% include 'Authentication/messages.html' %}
+    <div id="root">
+        <div class="bg-gray-100 font-family-karla flex">
+            <aside class="relative bg-sidebar  w-64 hidden sm:block shadow-xl">
+                <div class="p-6"><p class="text-white text-3xl font-semibold uppercase hover:text-gray-300">GYMKHANA ADMIN</p></div>
+                {% if user.is_authenticated %}
+                <nav class="text-white text-base font-semibold pt-3">
+                    <a href="{% url 'about-form' %}" style="color: whitesmoke;" class="active flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                        Abouts
+                    </a>
+                    <a href="{% url 'minute-form' %}" style="color: whitesmoke;" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                        Minutes
+                    </a>
+                    <a href="{% url 'gallery-form' %}" style="color: whitesmoke;" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                        Gallery
+                    </a>
+                </nav>
+            {% endif %}
+            </aside>
+            <div class="relative w-full flex flex-col overflow-y-hidden">
+                <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
+                    <div class="w-1/2"></div>
+                    {% if user.is_authenticated %}
+                    <div class="relative w-1/2 flex justify-end"><button> <a href="{% url 'signout' %}">Logout</a></button></div>
+                    {% else %}
+                    <div class="relative w-1/2 flex justify-end"><button> <a href="{% url 'signin' %}">Login</a></button></div>
+                    {% endif %}
+                </header>
+                <header class="w-full bg-sidebar py-5 px-6 sm:hidden">
+                    <div class="flex items-center justify-between"><a
+                            class="text-white text-3xl font-semibold uppercase hover:text-gray-300"
+                            href="/sa/admin/">Admin</a><button class="text-white text-3xl focus:outline-none">O</button>
+                    </div>
+                    <nav class="hidden flex flex-col pt-4">
+                        {% if not user.is_authenticated %}
+                        <a
+                            href="{% url 'signin' %}"
+                            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">Login</a>
+                        {% else %}
+                        <a
+                            href="{% url 'signout' %}"
+                            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">Logout</a>
+                        {% endif %}
+                    </nav>
+                </header>
+                <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+                    <main class="w-full flex-grow p-6">
+                        <div class="h-4/5 flex justify-center items-center">
+                            {% block content %}
+                            <div>
+                                <h1 class="text-2xl sm:text-3xl font-bold text-center">Welcome to Gymkhana Portal's Admin
+                                    Panel.</h1>
+                                {% if not user.is_authenticated %}
+                                <p class="text-xl sm:text-2xl text-center mt-3">Please <a
+                                        href="{% url 'signin' %}"
+                                        class="text-blue-500 underline">Login</a></p>
+                                {% endif %}
+                            </div>
+                            {% endblock %}
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>

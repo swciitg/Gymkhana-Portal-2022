@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<title>Students' Gymkhana Council</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Bootstrap CSS -->
+	<link id="u-theme-google-font" rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" />
+	<link id="u-page-google-font" rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Slab:100,200,300,400,500,600,700,800,900" />
+
+	<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+	<link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+    />
+</head>
+
+<body>
+
+<div class="header bg-white py-1 sticky top-0">
+	<div class="container flex justify-center mb-1.5 mt-0.5 ml-auto mr-auto">
+	  <span class="float-left ">
+		<img src="data:image/png;base64,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" alt="1200px-IIT-Guwahati-Logo-1" border="0" />
+	  </span>
+	  <span class="float-left pl-2 flex items-center">
+		<h1 class="text-sm ">
+		  Students' Gymkhana Council
+		</h1>
+	  </span>
+	</div>
+  </div>
+
+<div class="flex justify-between border-black z-50">
+	<div class="flex justify-center bg-blue-600 p-4 w-full md:w-auto text-white font-bold">Students' Gymkhana Council</div>
+	<div class="hidden md:block py-4 ">Hostel Affairs Board</div>
+	<div class="hidden md:block py-4">Welfare Board</div>
+	<div class="hidden md:block py-4">Sports Board</div>
+	<div class="hidden md:block py-4">SWC</div>
+	<div class="hidden md:block py-4">SAIL</div>
+	<div class="hidden md:block p-4">Technical Board</div>
+</div>
+  <!-- <div class="w-full">
+	<div id="image-slider" class="splide">
+		<div class="splide__track">
+			
+			<ul class="splide__list">
+				
+					<li class="splide__slide">
+						<img class="w-full h-1/2" data-splide-lazy="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKw2PktX34dgKztY2wH-gN2n_gNmyCiFVLgE4nmW859w&s" alt="">
+					</li>
+					<li class="splide__slide">
+						<img class="w-full h-1/2" data-splide-lazy="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKw2PktX34dgKztY2wH-gN2n_gNmyCiFVLgE4nmW859w&s" alt="">
+					</li>
+					<li class="splide__slide">
+						<img class="w-full h-1/2" data-splide-lazy="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKw2PktX34dgKztY2wH-gN2n_gNmyCiFVLgE4nmW859w&s" alt="">
+					</li>
+			</ul>
+		</div>
+	</div>
+	</div> -->
+	<div class="scroll flex overflow-x-scroll sm:px-14 justify-center">
+		<a href="">
+		  <div class="font-blue-550 flex h-16 flex-initial items-center px-2 py-5 text-base font-bold hover:text-blue-500 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-14">
+			<p class="leading-4 sm:leading-none">Home</p>
+		  </div>
+		</a>
+		<a href="">
+		  <div class="font-blue-550 flex h-16 flex-initial items-center px-2 py-5 text-base font-bold hover:text-blue-500 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-14">
+			<p class="leading-4 sm:leading-none">Home</p>
+		  </div>
+		</a>
+		<a href="">
+		  <div class="font-blue-550 flex h-16 flex-initial items-center px-2 py-5 text-base font-bold hover:text-blue-500 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-14">
+			<p class="leading-4 sm:leading-none">Home</p>
+		  </div>
+		</a>
+	  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	  new Splide("#image-slider", {
+		type: "loop",
+		autoplay: true,
+		pagination: false,
+		arrows: false,
+		lazyLoad: true,
+		interval: 5000,
+		speed: 1000,
+		width: "100%",
+		rewind: false,
+		padding: "0%",
+		drag: false,
+		pauseOnHover: false,
+		pauseOnFocus: false,
+	  }).mount();
+	});
+  </script>
+</html>
